@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path')
 const mongoose = require('mongoose');
-const Blog = require('./models/blog')
+const Blog = require('./models/blog');
+const { response } = require('express');
 
 const app = express();
 
@@ -11,29 +12,35 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => app.listen(PORT, () => console.log(`Server started on port: ${PORT}`)))
     .catch((err) => console.log(err));
 
-//mongoose and mongo sandbox routes
-app.get('/add-blog', (req, res) => {
-    // const blog = new Blog({
-    //     title: "fire",
-    //     snippet: "about mu new blog",
-    //     body: "More about my special blog"
-    // });
-    // blog.save()
-    //     .then((result) => {
-    //         res.send(result)
-    //     })
-    //     .catch((err) => console.log(err));
+//Website routes
+app.get('/', (req, res) => {
+    res.redirect('/blogs')
+});
+app.get('/about', (req, res) => {
+    res.render('about', { title: 'About' });
+});
+app.get('/product', (req, res) => {
+    res.render('product', { title: 'Products' });
+});
+app.get('/admin', (req, res) => {
+    res.render('admin', { title: 'Admin' });
 });
 
-app.get('/all-blogs', (req, res) => {
+app.get('/blogs', (req, res) => {
     Blog.find()
         .then((result) => {
-            res.send(result)
+            res.render('index', { title: "Home", blogs: result })
         })
-        .catch((err) => {
-            console.log(err)
-        });
-})
+        .catch((err) => console.log(err));
+});
+
+app.get('/contact', (req, res) => {
+    res.render('contact', { title: 'Contact' });
+});
+
+
+//register view engine
+app.set('view engine', 'ejs');
 
 //Set static folder
 app.use(express.static(path.join(__dirname, 'public')));

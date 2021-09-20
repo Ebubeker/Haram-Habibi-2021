@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include('./partials/head.ejs') %>
+
+</head>
+
+<body>
+    <div class="tm-page-wrap mx-auto">
+        <div class="position-relative">
+            <div class="potition-absolute tm-site-header">
+                <div class="container-fluid position-relative">
+                    <div class="row">
+                        <div class="col-7 col-md-4">
+                        </div>
+                        <div class="col-5 col-md-8 ml-auto mr-0">
+                            <div class="tm-site-nav">
+
+                                <%- include('./partials/nav.ejs') %>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tm-welcome-container tm-fixed-header tm-fixed-header-2">
+                <div class="text-center">
+                    <p class="tm-welcome-text mb-1 text-black font-weight-bold" id="black-text">Smile by buying some of the great Islamic products in the market.</p>
+                </div>
+            </div>
+
+            <div id="tm-fixed-header-bg"></div>
+            <!-- Header image -->
+        </div>
+
+        <!-- Page content -->
+        <div class="container-fluid">
+            <div id="content" class="mx-auto tm-content-container">
+                <main>
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="tm-page-title mb-4">Products</h2>
+                            <div class="tm-categories-container mb-5">
+                                <h3 class="tm-text-black tm-categories-text">Categories:</h3>
+                                <ul class="nav tm-category-list">
+                                    <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link active" id="mix">Mix</a></li>
+                                    <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link" id="women">Women</a></li>
+                                    <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link" id="men">Men</a></li>
+                                    <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link" id="children">Children</a></li>
+                                    <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link" id="accessories">Accessories</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row tm-catalog-item-list" id="products">
+
+                    </div>
+
+                    <!-- Catalog Paging Buttons -->
+                    <div>
+                        <ul class="nav tm-paging-links" id="next-back">
+                            <!-- <li class="nav-item active"><a href="#" class="nav-link tm-paging-link">1</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link tm-paging-link">2</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link tm-paging-link">3</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link tm-paging-link">4</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link tm-paging-link">></a></li> -->
+                        </ul>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <%- include('./partials/footer.ejs') %>
+    </div>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/parallax.min.js"></script>
+    <script src="js/products.js"></script>
+</body>
+
+</html>

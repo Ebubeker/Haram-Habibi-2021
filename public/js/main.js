@@ -353,46 +353,46 @@ accessories.addEventListener('click', () => {
 
 //Blog part
 
-let blog = document.getElementById('home-blog');
-let allBlogs = [];
+// let blog = document.getElementById('home-blog');
+// let allBlogs = [];
 
-fetch('../json/blogs.json')
-    .then(response => response.json())
-    .then(data => {
-        let count = 0;
-        allBlogs = data;
-        data.forEach(prodInfo => {
-            if (count !== 3) {
-                let product = document.createElement('div');
-                product.classList.add('col-lg-4', 'col-md-6', 'col-sm-12', 'tm-catalog-item');
-                product.onclick = function() {
-                    let id = prodInfo.id;
-                    blogLink(id)
-                };
-                product.id = `product-${prodInfo.id}`;
-                product.innerHTML = `
-                            <div class="position-relative tm-thumbnail-container">
-                                <img src="img/tn-01.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
-                                <a href="video-page.html" class="position-absolute tm-img-overlay">
-                                    <i class="fas fa-play tm-overlay-icon"></i>
-                                </a>
-                            </div>
-                            <div class="p-4 tm-bg-gray tm-catalog-item-description">
-                                <h3 class="tm-text-black font-weight-bold mb-3 tm-catalog-item-title">${prodInfo.title}</h3>
-                                <p class="tm-catalog-item-text">${prodInfo.description}</p>
-                                <p class="font-weight-bold">${prodInfo.price} USD</p>
-                            </div>
-                            `
-                blog.appendChild(product)
-                count++;
-            }
-        });
-    });
+// fetch('../json/blogs.json')
+//     .then(response => response.json())
+//     .then(data => {
+//         let count = 0;
+//         allBlogs = data;
+//         data.forEach(prodInfo => {
+//             if (count !== 3) {
+//                 let product = document.createElement('div');
+//                 product.classList.add('col-lg-4', 'col-md-6', 'col-sm-12', 'tm-catalog-item');
+//                 product.onclick = function() {
+//                     let id = prodInfo.id;
+//                     blogLink(id)
+//                 };
+//                 product.id = `product-${prodInfo.id}`;
+//                 product.innerHTML = `
+//                             <div class="position-relative tm-thumbnail-container">
+//                                 <img src="img/tn-01.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
+//                                 <a href="video-page.html" class="position-absolute tm-img-overlay">
+//                                     <i class="fas fa-play tm-overlay-icon"></i>
+//                                 </a>
+//                             </div>
+//                             <div class="p-4 tm-bg-gray tm-catalog-item-description">
+//                                 <h3 class="tm-text-black font-weight-bold mb-3 tm-catalog-item-title">${prodInfo.title}</h3>
+//                                 <p class="tm-catalog-item-text">${prodInfo.description}</p>
+//                                 <p class="font-weight-bold">${prodInfo.price} USD</p>
+//                             </div>
+//                             `
+//                 blog.appendChild(product)
+//                 count++;
+//             }
+//         });
+//     });
 
-function blogLink(id) {
-    allBlogs.forEach(product => {
-        if (product.id === id) {
-            window.open(product.affiliate_link)
-        }
-    })
-};
+// function blogLink(id) {
+//     allBlogs.forEach(product => {
+//         if (product.id === id) {
+//             window.open(product.affiliate_link)
+//         }
+//     })
+// };

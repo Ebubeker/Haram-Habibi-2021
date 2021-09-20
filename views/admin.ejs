@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include('./partials/head.ejs') %>
+
+</head>
+
+<body>
+
+    <div class="tm-page-wrap mx-auto">
+        <div class="position-relative">
+            <div class="position-absolute tm-site-header">
+                <div class="container-fluid position-relative">
+                    <div class="row">
+                        <div class="col-7 col-md-4">
+
+                        </div>
+                        <div class="col-5 col-md-8 ml-auto mr-0">
+                            <div class="tm-site-nav">
+
+                                <%- include('./partials/nav.ejs') %>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tm-welcome-container text-center text-white">
+                <div class="tm-welcome-container-inner">
+                    <p class="tm-welcome-text mb-1 text-black font-weight-bold" id="black-text"> A smile is more precious than anything in the world.</p>
+                    <p class="tm-welcome-text mb-5 text-black font-weight-bold" id="anth-black-text">Make sure to smile with us, it is what we want, you to smile!</p>
+                    <a href="#content" class="btn tm-btn-animate tm-btn-cta tm-icon-down">
+                        <span>Let's Go</span>
+                    </a>
+                </div>
+            </div>
+
+            <div id="tm-video-container">
+                <video autoplay muted loop id="tm-video">
+                    <!-- <source src="video/sunset-timelapse-video.mp4" type="video/mp4"> -->
+                        <source src="video/Medina.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <i id="tm-video-control-button" class="fas fa-pause"></i>
+        </div>
+
+
+
+        <%- include('./partials/footer.ejs') %>
+            <!-- tm-content-container -->
+    </div>
+
+    </div>
+    <!-- .tm-page-wrap -->
+
+    <script src="js/jquery-3.4.1.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/main.js "></script>
+</body>
+
+</html>
