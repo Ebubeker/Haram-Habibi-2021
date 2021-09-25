@@ -12,6 +12,7 @@ const Email = require('./models/emailColl');
 const Contact = require('./models/conatct');
 
 // const MongoDbSession = require('connect-mongodb-session')(session);
+const PORT = process.env.Port || 5000;
 
 // const store = new session.MemoryStore();
 
@@ -302,4 +303,4 @@ app.set('view engine', 'ejs');
 // app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(bodyParser, json());
 
-const PORT = process.env.Port || 5000;
+// const PORT = process.env.Port || 5000;
