@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include('./partials/head.ejs') %>
+
+        <style>
+            input {
+                display: block;
+                width: 35%;
+            }
+            
+            textarea {
+                display: block;
+                resize: none;
+            }
+            
+            .btn {
+                padding: 8px 20px;
+            }
+            
+            #email-content,
+            #product-content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            #product-content {
+                width: 100%;
+            }
+            
+            #dashboard {
+                display: flex;
+                justify-content: space-between;
+            }
+            
+            #product-dashboard {
+                display: block;
+            }
+            
+            .email-section,
+            .email-list {
+                width: 48%;
+            }
+        </style>
+
+</head>
+
+<body>
+
+    <div class="tm-page-wrap mx-auto">
+        <div class="position-relative">
+            <div class="position-absolute tm-site-header">
+                <div class="container-fluid position-relative">
+                    <div class="row">
+                        <div class="col-7 col-md-4">
+
+                        </div>
+                        <div class="col-5 col-md-8 ml-auto mr-0">
+                            <div class="tm-site-nav">
+
+                                <%- include('./partials/nav.ejs') %>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container-fluid">
+            <div id="content" class="mx-auto tm-content-container">
+                <h1 class="display-1" style="margin-top: 200px;">Still under Development.......</h1>
+                <i class="fas fa-cogs" style="font-size: 100px; color: rgb(84, 84, 255);"></i>
+            </div>
+        </div>
+
+
+        <%- include('./partials/footer.ejs') %>
+            <!-- tm-content-container -->
+    </div>
+
+    </div>
+    <!-- .tm-page-wrap -->
+
+    <script src="js/jquery-3.4.1.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

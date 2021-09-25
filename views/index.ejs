@@ -5,6 +5,12 @@
 
     <%- include('./partials/head.ejs') %>
 
+        <style>
+            #card {
+                margin: 10px auto;
+            }
+        </style>
+
 </head>
 
 <body>
@@ -31,8 +37,8 @@
                 <div class="tm-welcome-container-inner">
                     <p class="tm-welcome-text mb-1 text-black font-weight-bold" id="black-text"> A smile is more precious than anything in the world.</p>
                     <p class="tm-welcome-text mb-5 text-black font-weight-bold" id="anth-black-text">Make sure to smile with us, it is what we want, you to smile!</p>
-                    <a href="#content" class="btn tm-btn-animate tm-btn-cta tm-icon-down">
-                        <span>Let's Go</span>
+                    <a href="/product" class="btn tm-btn-animate tm-btn-cta tm-icon-down">
+                        <span>Products</span>
                     </a>
                 </div>
             </div>
@@ -40,7 +46,7 @@
             <div id="tm-video-container">
                 <video autoplay muted loop id="tm-video">
                     <!-- <source src="video/sunset-timelapse-video.mp4" type="video/mp4"> -->
-                        <source src="video/Medina.mp4" type="video/mp4">
+                        <source src="video/mosque.mp4" type="video/mp4">
                 </video>
             </div>
 
@@ -53,63 +59,47 @@
                     <div class="row">
                         <div class="col-12">
                             <h2 class="tm-page-title font-weight-bold mb-4">Recommended Products</h2>
-                            <div class="tm-categories-container mb-5">
-                                <h3 class="tm-text-black tm-categories-text">Categories:</h3>
-                                <ul class="nav tm-category-list">
-                                    <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link active" id="mix">Mix</a></li>
-                                    <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link" id="women">Women</a></li>
-                                    <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link" id="men">Men</a></li>
-                                    <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link" id="children">Children</a></li>
-                                    <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link" id="accessories">Accessories</a></li>
-                                </ul>
-                            </div>
+
                         </div>
                     </div>
 
-                    <div class="row tm-catalog-item-list" id="home-catalog">
-
-                    </div>
-                </main>
-
-                <!-- blogs -->
-
-                <main>
-                    <div class="row">
-                        <div class="col-12">
-                            <h2 class="tm-page-title mb-4 font-weight-bold">Blogs For You</h2>
-                        </div>
-                    </div>
-
-                    <div class="row tm-catalog-item-list " id="home-blog ">
-                        <% if(blogs.length > 0){ %>
+                    <div class="row tm-catalog-item-list " id="home-catalog">
+                        <% if(products.length > 0){ %>
                             <% let count = 0 %>
-                                <% blogs.forEach((blog)=>{ %>
+                                <% products.forEach((prod)=>{ %>
                                     <% if(count !== 3){ %>
                                         <% count++ %>
-                                            <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
-                                                <div class="position-relative tm-thumbnail-container ">
-                                                    <img src="img/tn-01.jpg " alt="Image " class="img-fluid tm-catalog-item-img ">
-                                                    <a href="video-page.html " class="position-absolute tm-img-overlay ">
-                                                        <i class="fas fa-play tm-overlay-icon "></i>
+                                            <div id="card" class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item pl-0 pr-0" onclick="affiliateLink('<%= prod.url%>')">
+                                                <div class="position-relative tm-thumbnail-container">
+                                                    <img src=<%=prod.image %> alt="Image" class="img-fluid tm-catalog-item-img" style="max-height: 400px; ">
+                                                    <a href=<%=prod.url %>  class="position-absolute tm-img-overlay">
+                                                        <i class="fas fa-play tm-overlay-icon"></i>
                                                     </a>
                                                 </div>
-                                                <div class="p-4 tm-bg-gray tm-catalog-item-description ">
-                                                    <h3 class="tm-text-black font-weight-bold mb-3 tm-catalog-item-title ">
-                                                        <%= blog.title %>
+                                                <div class="p-4 tm-bg-gray tm-catalog-item-description">
+                                                    <h3 class="tm-text-black font-weight-bold mb-3 tm-catalog-item-title">
+                                                        <%=prod.title  %>
                                                     </h3>
-                                                    <p class="tm-catalog-item-text ">
-                                                        <%= blog.body %>
+                                                    <p class="tm-catalog-item-text">
+                                                        <%= prod.description %>
                                                     </p>
-                                                    <p class="font-weight-bold ">Hi</p>
+                                                    <p class="font-weight-bold">
+                                                        <%=prod.price %> USD</p>
                                                 </div>
                                             </div>
 
                                             <% } %>
                                                 <% }) %>
 
-                                                    <% } %>
+                                                    <% } else { %>
+                                                        <h2>No Products were found!!</h2>
+                                                        <% } %>
+
+
                     </div>
                 </main>
+
+
 
                 <%- include('./partials/footer.ejs') %>
                     <!-- tm-content-container -->
@@ -120,7 +110,7 @@
 
         <script src="js/jquery-3.4.1.min.js "></script>
         <script src="js/bootstrap.min.js "></script>
-        <script src="js/main.js "></script>
+        <script src="js/main.js"></script>
 </body>
 
 </html>

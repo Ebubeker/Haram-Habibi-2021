@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include('./partials/head.ejs') %>
+
+        <style>
+            input {
+                display: block;
+                width: 35%;
+            }
+            
+            textarea {
+                display: block;
+                resize: none;
+            }
+            
+            .btn {
+                padding: 8px 20px;
+            }
+        </style>
+</head>
+
+<body>
+    <a href="/admin" class="btn btn-success">Go To Admin</a>
+    <div id="section" class="container">
+        <form action="/createProduct" method="post">
+            <h3>New Product</h3>
+            <input type="text" name="image" placeholder="Image URL" class="mb-1 form-control">
+            <input type="text" name="title" placeholder="Title" class="mb-1 form-control">
+            <textarea type="text" name="description" placeholder="Description" class="mb-1 form-control" style="height: 100px;"></textarea>
+            <input type="text" name="price" placeholder="Price" class="mb-1 form-control">
+            <input type="text" name="link" placeholder="Link" class="mb-1 form-control">
+            <input type="text" name="categorie" placeholder="Categorie" class="mb-1 form-control">
+            <button class="btn btn-primary mt-3">Create Product</button>
+        </form>
+    </div>
+</body>
+
+</html>

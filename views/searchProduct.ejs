@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include('./partials/head.ejs') %>
+
+        <style>
+            .btn {
+                padding: 8px 20px;
+            }
+        </style>
+
+</head>
+
+<body>
+    <% let count = (num-1) * 13 %>
+        <% let int = 1 %>
+            <% let max = num * 12 %>
+                <% if (max > products.length) { %>
+                    <% max = products.length + 1 %>
+                        <% } %>
+                            <div class="tm-page-wrap mx-auto">
+                                <div class="position-relative">
+                                    <div class="potition-absolute tm-site-header">
+                                        <div class="container-fluid position-relative">
+                                            <div class="row">
+                                                <div class="col-7 col-md-4">
+                                                </div>
+                                                <div class="col-5 col-md-8 ml-auto mr-0">
+                                                    <div class="tm-site-nav">
+
+                                                        <%- include('./partials/nav.ejs') %>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tm-welcome-container tm-fixed-header tm-fixed-header-2">
+                                        <div class="text-center">
+                                            <p class="tm-welcome-text mb-1 text-black font-weight-bold" id="black-text">Smile by buying some of the great Islamic products in the market.</p>
+                                        </div>
+                                    </div>
+
+                                    <div id="tm-fixed-header-bg"></div>
+                                    <!-- Header image -->
+                                </div>
+
+                                <!-- Page content -->
+                                <div class="container-fluid">
+                                    <div id="content" class="mx-auto tm-content-container">
+                                        <main>
+                                            <div class="row">
+                                                <div class="col-12 mb-4">
+                                                    <h2 class="tm-page-title mb-4">Products</h2>
+                                                    <p>Searched for products related to:
+                                                        <%= searchName  %>
+                                                    </p>
+                                                    <form action="/search" method="POST" class="tm-contact-form">
+                                                        <input type="text" name="searchName" placeholder="Search" class="form-control rounded-0" style="width: 20%; display: inline;">
+                                                        <button class="btn btn-white"><i class="fas fa-search"></i></button>
+                                                    </form>
+                                                    <form action="/filter" method="POST" class="tm-contact-form">
+                                                        <select class="form-select p-1" aria-label="Default select example" name="categorie">
+                                                            <% let categorieArray = ['All'] %> 
+                                                            <% allProd.forEach((prod)=>{ %>
+                                                                <% let isIn = false %> 
+                                                                <% categorieArray.forEach((carr)=>{ %> 
+                                                                    <% if (carr === prod.categorie) { %>
+                                                                        <% isIn = true %> 
+                                                                    <% } %>
+                                                                    <% }) %>
+                                                                <% if (isIn === false) { %>
+                                                                    <% categorieArray.push(prod.categorie) %> 
+                                                                <% } %>
+                                                                <% }) %>  
+                                                            <% for( let i = 0; i < categorieArray.length; i++ ) { %>
+                                                                <option value="<%= categorieArray[i] %>" > <%= categorieArray[i] %></option>
+                                                            <% } %>
+                                                            <!-- <option selected>Open this select menu</option>
+                                                            <option value="1">One</option>
+                                                            <option value="2">Two</option>
+                                                            <option value="3">Three</option> -->
+                                                        </select>
+                                                        <select class="form-select p-1" aria-label="Default select example" name="price">
+                                                            <option value="All">All</option>
+                                                            <option value="0-50">0-50$</option>
+                                                            <option value="50-100">50-100$</option>
+                                                            <option value="100-200">100-200$</option>
+                                                            <option value="200-1000000000">200$ and over</option>
+                                                        </select>
+                                                        <button class="btn btn-info p-1 ml-5">Filter</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                            <div class="row tm-catalog-item-list" id="products">
+                                                <% if(products.length > 0){ %>
+
+                                                    <% products.forEach((prod)=>{ %>
+                                                        <% if (int >= count) { %>
+
+                                                            <% if(count !== max){ %>
+                                                                <% count++ %>
+                                                                    <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item" onclick="affiliateLink('<%= prod.url%>')">
+                                                                        <div class="position-relative tm-thumbnail-container">
+                                                                            <img src=<%=prod.image %> alt="Image" class="img-fluid tm-catalog-item-img" style="max-height: 400px; ">
+                                                                            <a href=<%=prod.url %>  class="position-absolute tm-img-overlay">
+                                                                                        <i class="fas fa-play tm-overlay-icon"></i>
+                                                                                    </a>
+                                                                        </div>
+                                                                        <div class="p-4 tm-bg-gray tm-catalog-item-description">
+                                                                            <h3 class="tm-text-black font-weight-bold mb-3 tm-catalog-item-title">
+                                                                                <%=prod.title  %>
+                                                                            </h3>
+                                                                            <p class="tm-catalog-item-text">
+                                                                                <%= prod.description %>
+                                                                            </p>
+                                                                            <p class="font-weight-bold">
+                                                                                <%=prod.price %> USD</p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <% } %>
+
+                                                                        <% } %>
+                                                                            <% int++  %>
+                                                                                <% }) %>
+
+                                                                                    <% } %>
+                                            </div>
+
+                                            <!-- Catalog Paging Buttons -->
+                                            <div>
+                                                <ul class="nav tm-paging-links" id="next-back">
+                                                    <% let amount = parseInt(products.length / 12)%>
+                                                        <% (products.length % 12) > 0 ? amount++ : amount = amount;%>
+                                                            <% for( let i = 0; i < amount; i++ ) { %>
+                                                                <% if (i === 0) { %>
+                                                                    <li class="nav-item active">
+                                                                        <a href="/product/<%= i+1 %> " class="nav-link tm-paging-link">
+                                                                            <%= i+1 %>
+                                                                        </a>
+                                                                    </li>
+                                                                    <% } else { %>
+
+                                                                        <li class="nav-item ">
+                                                                            <a href="/product/<%= i+1 %> " class="nav-link tm-paging-link ">
+                                                                                <%= i+1 %>
+                                                                            </a>
+                                                                        </li>
+                                                                        <% } %>
+                                                                            <% } %>
+                                                </ul>
+                                            </div>
+                                            <% function change(id){ %>
+                                                <% console.log('hi') %>
+                                                    <% } %>
+                                        </main>
+                                    </div>
+                                </div>
+
+                                <%- include('./partials/footer.ejs') %>
+                            </div>
+
+                            <script src="js/jquery-3.4.1.min.js "></script>
+                            <script src="js/bootstrap.min.js "></script>
+                            <script src="js/parallax.min.js "></script>
+                            <script src="js/products.js "></script>
+                            <script src="js/main.js "></script>
+</body>
+
+</html>

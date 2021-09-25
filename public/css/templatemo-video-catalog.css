@@ -610,6 +610,12 @@ video {
     text-shadow: 0px 0px 4px rgba(150, 150, 150, 0.6);
 }
 
+#home-catalog img,
+#products img {
+    width: 100%;
+    object-fit: cover;
+}
+
 @media (min-width: 992px) {
     #tm-main-nav .nav-item {
         margin: 20px 40px;

@@ -5,6 +5,47 @@
 
     <%- include('./partials/head.ejs') %>
 
+        <style>
+            input {
+                display: block;
+                width: 35%;
+            }
+            
+            textarea {
+                display: block;
+                resize: none;
+            }
+            
+            .btn {
+                padding: 8px 20px;
+            }
+            
+            #email-content,
+            #product-content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            #product-content {
+                width: 100%;
+            }
+            
+            #dashboard {
+                display: flex;
+                justify-content: space-between;
+            }
+            
+            #product-dashboard {
+                display: block;
+            }
+            
+            .email-section,
+            .email-list {
+                width: 48%;
+            }
+        </style>
+
 </head>
 
 <body>
@@ -27,27 +68,96 @@
                     </div>
                 </div>
             </div>
-            <div class="tm-welcome-container text-center text-white">
-                <div class="tm-welcome-container-inner">
-                    <p class="tm-welcome-text mb-1 text-black font-weight-bold" id="black-text"> A smile is more precious than anything in the world.</p>
-                    <p class="tm-welcome-text mb-5 text-black font-weight-bold" id="anth-black-text">Make sure to smile with us, it is what we want, you to smile!</p>
-                    <a href="#content" class="btn tm-btn-animate tm-btn-cta tm-icon-down">
-                        <span>Let's Go</span>
-                    </a>
-                </div>
-            </div>
 
-            <div id="tm-video-container">
-                <video autoplay muted loop id="tm-video">
-                    <!-- <source src="video/sunset-timelapse-video.mp4" type="video/mp4"> -->
-                        <source src="video/Medina.mp4" type="video/mp4">
-                </video>
-            </div>
-
-            <i id="tm-video-control-button" class="fas fa-pause"></i>
         </div>
 
 
+        <div class="container-fluid">
+            <div id="content" class="mx-auto tm-content-container">
+                <main>
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="tm-page-title mb-4">Admin</h2>
+                            <div class="tm-categories-container mb-5">
+                                <h3 class="tm-text-black tm-categories-text">WorkBench:</h3>
+                                <ul class="nav tm-category-list">
+                                    <li class="nav-item tm-category-item"><a href="/createProduct" class="nav-link tm-category-link" id="product">Create a Product</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="tm-categories-container mb-5" id="dashboard">
+                                <div class="email-section">
+                                    <h4 class="font-weight-bold">Emails Sent To Us</h4>
+                                    <hr>
+                                    <ul class="list-group">
+                                        <% let count = 0; %>
+                                            <% contact.forEach((conto)=>{ %>
+                                                <% count++ %>
+
+                                                    <% if (count < 10) { %>
+                                                        <li class="list-group-item" id="email-content">
+                                                            <p class="mb-0">
+                                                                <%= conto.email %>
+                                                            </p>
+                                                            <i class="fas fa-trash-alt" style="color: rgb(242, 79, 79); cursor: pointer;"></i>
+                                                        </li>
+                                                        <% } %>
+
+
+                                                            <% }) %>
+                                    </ul>
+                                    <a class="btn btn-info mt-3" href="/allEmailsSent">Check All Emails Sent</a>
+                                </div>
+                                <div class="email-list">
+                                    <h4 class="font-weight-bold">Subscription List</h4>
+                                    <hr>
+                                    <ul class="list-group">
+                                        <% let number = 0; %>
+                                            <% email.forEach((email)=>{ %>
+                                                <% number++ %>
+
+                                                    <li class="list-group-item" id="email-content">
+                                                        <p class="mb-0">
+                                                            <%= email.email %>
+                                                        </p>
+                                                    </li>
+
+                                                    <% }) %>
+                                    </ul>
+                                    <a class="btn btn-info mt-3" href="/subscriptions">Email Subscribed</a>
+                                </div>
+                            </div>
+
+                            <div class="tm-categories-container mb-5" id="product-dashboard">
+                                <h4 class="font-weight-bold">Top 10 products</h4>
+                                <hr>
+
+                                <ul class="list-group">
+
+                                    <% let nr = 0; %>
+                                        <% product.forEach((prod)=>{ %>
+                                            <% nr++ %>
+                                                <% if (nr < 10) { %>
+                                                    <li class="list-group-item" id="product-content">
+                                                        <img src=<%=prod.image %> alt="" style="width: 50px; height: 50px;">
+                                                        <p class="mb-0">
+                                                            <%= prod.title %>
+                                                        </p>
+                                                        <p class="font-weight-bold">
+                                                            <%= prod.price %>$
+                                                        </p>
+                                                    </li>
+                                                    <% } %>
+
+                                                        <% }) %>
+                                </ul>
+                                <a class="btn btn-info mt-3" href="/products">Check Products</a>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
 
         <%- include('./partials/footer.ejs') %>
             <!-- tm-content-container -->
@@ -58,7 +168,7 @@
 
     <script src="js/jquery-3.4.1.min.js "></script>
     <script src="js/bootstrap.min.js "></script>
-    <script src="js/main.js "></script>
+    <script src="js/admin.js"></script>
 </body>
 
 </html>

@@ -8,78 +8,162 @@
 </head>
 
 <body>
-    <div class="tm-page-wrap mx-auto">
-        <div class="position-relative">
-            <div class="potition-absolute tm-site-header">
-                <div class="container-fluid position-relative">
-                    <div class="row">
-                        <div class="col-7 col-md-4">
-                        </div>
-                        <div class="col-5 col-md-8 ml-auto mr-0">
-                            <div class="tm-site-nav">
+    <% let count = 0 %>
+        <% let max = 12 %>
+            <div class="tm-page-wrap mx-auto">
+                <div class="position-relative">
+                    <div class="potition-absolute tm-site-header">
+                        <div class="container-fluid position-relative">
+                            <div class="row">
+                                <div class="col-7 col-md-4">
+                                </div>
+                                <div class="col-5 col-md-8 ml-auto mr-0">
+                                    <div class="tm-site-nav">
 
-                                <%- include('./partials/nav.ejs') %>
+                                        <%- include('./partials/nav.ejs') %>
 
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="tm-welcome-container tm-fixed-header tm-fixed-header-2">
-                <div class="text-center">
-                    <p class="tm-welcome-text mb-1 text-black font-weight-bold" id="black-text">Smile by buying some of the great Islamic products in the market.</p>
-                </div>
-            </div>
+                    <div class="tm-welcome-container tm-fixed-header tm-fixed-header-2">
+                        <div class="text-center">
+                            <p class="tm-welcome-text mb-1 text-black font-weight-bold" id="black-text">Smile by buying some of the great Islamic products in the market.</p>
+                        </div>
+                    </div>
 
-            <div id="tm-fixed-header-bg"></div>
-            <!-- Header image -->
-        </div>
+                    <div id="tm-fixed-header-bg"></div>
+                    <!-- Header image -->
+                </div>
 
-        <!-- Page content -->
-        <div class="container-fluid">
-            <div id="content" class="mx-auto tm-content-container">
-                <main>
-                    <div class="row">
-                        <div class="col-12">
-                            <h2 class="tm-page-title mb-4">Products</h2>
-                            <div class="tm-categories-container mb-5">
-                                <h3 class="tm-text-black tm-categories-text">Categories:</h3>
-                                <ul class="nav tm-category-list">
-                                    <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link active" id="mix">Mix</a></li>
-                                    <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link" id="women">Women</a></li>
-                                    <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link" id="men">Men</a></li>
-                                    <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link" id="children">Children</a></li>
-                                    <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link" id="accessories">Accessories</a></li>
+                <!-- Page content -->
+                <div class="container-fluid">
+                    <div id="content" class="mx-auto tm-content-container">
+                        <main>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h2 class="tm-page-title mb-4">Products</h2>
+                                    <div class="tm-categories-container mb-5">
+                                        <h3 class="tm-text-black tm-categories-text">Categories:</h3>
+                                        <ul class="nav tm-category-list">
+                                            <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link active" id="mix">Mix</a></li>
+                                            <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link" id="women">Women</a></li>
+                                            <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link" id="men">Men</a></li>
+                                            <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link" id="children">Children</a></li>
+                                            <li class="nav-item tm-category-item"><a href="#a" class="nav-link tm-category-link" id="accessories">Accessories</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row tm-catalog-item-list" id="products">
+                                <% if(products.length > 0){ %>
+
+                                    <% products.forEach((prod)=>{ %>
+                                        <% if(count !== max){ %>
+                                            <% count++ %>
+                                                <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item" onclick="affiliateLink('<%= prod.url%>')">
+                                                    <div class="position-relative tm-thumbnail-container">
+                                                        <img src=<%=prod.image %> alt="Image" class="img-fluid tm-catalog-item-img" style="max-height: 400px; ">
+                                                        <a href=<%=prod.url %>  class="position-absolute tm-img-overlay">
+                                                        <i class="fas fa-play tm-overlay-icon"></i>
+                                                    </a>
+                                                    </div>
+                                                    <div class="p-4 tm-bg-gray tm-catalog-item-description">
+                                                        <h3 class="tm-text-black font-weight-bold mb-3 tm-catalog-item-title">
+                                                            <%=prod.title  %>
+                                                        </h3>
+                                                        <p class="tm-catalog-item-text">
+                                                            <%= prod.description %>
+                                                        </p>
+                                                        <p class="font-weight-bold">
+                                                            <%=prod.price %> USD</p>
+                                                    </div>
+                                                </div>
+
+                                                <% } %>
+                                                    <% }) %>
+
+                                                        <% } %>
+                            </div>
+
+                            <!-- Catalog Paging Buttons -->
+                            <div>
+                                <ul class="nav tm-paging-links" id="next-back">
+                                    <% let amount = parseInt(products.length / 12)%>
+                                        <% (products.length % 12) > 0 ? amount++ : amount = amount;%>
+                                            <% for( let i = 0; i < amount; i++ ) { %>
+                                                <% if (i === 0) { %>
+                                                    <li class="nav-item active">
+                                                        <a href="/product/<%= i+1 %> " class="nav-link tm-paging-link">
+                                                            <%= i+1 %>
+                                                        </a>
+                                                    </li>
+                                                    <% } else { %>
+
+                                                        <li class="nav-item ">
+                                                            <a href="/product/<%= i+1 %> " class="nav-link tm-paging-link ">
+                                                                <%= i+1 %>
+                                                            </a>
+                                                        </li>
+                                                        <% } %>
+                                                            <% } %>
                                 </ul>
                             </div>
-                        </div>
+                            <% function change(id){ %>
+                                <% console.log('hi') %>
+                                    <% } %>
+                        </main>
                     </div>
+                </div>
 
-                    <div class="row tm-catalog-item-list" id="products">
-
-                    </div>
-
-                    <!-- Catalog Paging Buttons -->
-                    <div>
-                        <ul class="nav tm-paging-links" id="next-back">
-                            <!-- <li class="nav-item active"><a href="#" class="nav-link tm-paging-link">1</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link tm-paging-link">2</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link tm-paging-link">3</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link tm-paging-link">4</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link tm-paging-link">></a></li> -->
-                        </ul>
-                    </div>
-                </main>
+                <%- include('./partials/footer.ejs') %>
             </div>
-        </div>
 
-        <%- include('./partials/footer.ejs') %>
-    </div>
+            <script>
+                // function change(id) {
+                //     count = 0;
+                //     max = 12;
+                //     let prodId = document.getElementById('products');
+                //     prodId.innerHTML = '';
+                //     console.log(product)
+                //     if (products.length > count) {
+                //         product.forEach((prod) => {
+                //             if (count !== max) {
+                //                 count++;
+                //                 let produkt = document.createElement('div');
+                //                 produkt.classList.add('col-lg-4', 'col-md-6', 'col-sm-12', 'tm-catalog-item');
+                //                 produkt.onclick = function() {
+                //                     let id = prodInfo.id;
+                //                     affiliateLink(id)
+                //                 };
+                //                 produkt.id = `product-${prodInfo.id}`;
+                //                 produkt.innerHTML = `
+                //                 <div class="position-relative tm-thumbnail-container">
+                //                     <img src="img/tn-01.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
+                //                     <a href="video-page.html" class="position-absolute tm-img-overlay">
+                //                         <i class="fas fa-play tm-overlay-icon"></i>
+                //                     </a>
+                //                 </div>
+                //                 <div class="p-4 tm-bg-gray tm-catalog-item-description">
+                //                     <h3 class="tm-text-black font-weight-bold mb-3 tm-catalog-item-title">${prodInfo.title}</h3>
+                //                     <p class="tm-catalog-item-text">${prodInfo.description}</p>
+                //                     <p class="font-weight-bold">${prodInfo.price} USD</p>
+                //                 </div>
+                //                 `
+                //                 prodId.appendChild(product);
+                //             }
+                //         });
+                //     }
+                // }
+            </script>
 
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/parallax.min.js"></script>
-    <script src="js/products.js"></script>
+            <script src="js/jquery-3.4.1.min.js "></script>
+            <script src="js/bootstrap.min.js "></script>
+            <script src="js/parallax.min.js "></script>
+            <script src="js/products.js "></script>
+            <script src="js/main.js "></script>
 </body>
 
 </html>

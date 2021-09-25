@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head.ejs') %>
+        <style>
+            body {
+                background-color: rgb(47, 48, 49);
+            }
+            
+            .login-form {
+                background-color: #fff;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 30px;
+                border-radius: 10px;
+            }
+            
+            form {
+                text-align: center;
+            }
+            
+            h2 {
+                margin-bottom: 30px;
+                text-align: left;
+            }
+            
+            input {
+                display: block;
+                margin-bottom: 20px;
+                width: 400px;
+                padding: 4px 20px;
+                text-align: left;
+            }
+            
+            .btn {
+                padding: 5px 20px;
+            }
+        </style>
+</head>
+
+<body>
+
+    <div class="go-Back">
+        <a href="/" class="btn btn-primary">Go Home</a>
+    </div>
+
+    <div class="login-form">
+        <h2>Log In</h2>
+        <form action="/login" method="post">
+            <p>
+                <%= par %>
+            </p>
+            <input type="text" placeholder="Username" name="username">
+            <input type="password" placeholder="Password" name="password">
+            <button type='submit' class="btn btn-primary">Log In</button>
+        </form>
+    </div>
+</body>
+
+</html>
