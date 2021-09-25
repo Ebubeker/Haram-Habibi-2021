@@ -12,7 +12,7 @@ const Email = require('./models/emailColl');
 const Contact = require('./models/conatct');
 
 // const MongoDbSession = require('connect-mongodb-session')(session);
-const PORT = process.env.Port || 5000;
+const PORT = process.env.PORT || 5000;
 
 // const store = new session.MemoryStore();
 
@@ -26,7 +26,8 @@ app.use(session({
     secret: 'secret',
     cookie: { maxAge: 24 * 60 * 60 * 1000 },
     saveUninitialized: false,
-    store
+    resave: false,
+    store,
 }));
 
 //connect to mongo db
