@@ -635,6 +635,10 @@ video {
 }
 
 @media (max-width: 991px) {
+    #black-text,
+    #anth-black-text {
+        font-size: 30px;
+    }
     .navbar {
         max-width: 220px;
         position: absolute;
@@ -724,6 +728,9 @@ video {
 }
 
 @media (max-width: 419px) {
+    #anth-black-text {
+        display: none;
+    }
     .tm-testimonial {
         flex-direction: column;
     }
