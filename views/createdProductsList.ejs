@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include('./partials/head.ejs') %>
+
+        <style>
+            input {
+                display: block;
+                width: 35%;
+            }
+            
+            textarea {
+                display: block;
+                resize: none;
+            }
+            
+            .btn {
+                padding: 8px 20px;
+            }
+            
+            #email-content,
+            #product-content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            #product-content {
+                width: 100%;
+            }
+            
+            #dashboard {
+                display: flex;
+                justify-content: space-between;
+            }
+            
+            #product-dashboard {
+                display: block;
+            }
+            
+            .email-section,
+            .email-list {
+                width: 48%;
+            }
+            
+            @media (max-width: 991px) {
+                .email-section,
+                .email-list {
+                    width: 100%;
+                    margin-bottom: 50px;
+                }
+            }
+        </style>
+
+</head>
+
+<body>
+
+    <div class="tm-page-wrap mx-auto">
+
+        <a href="/admin" class="btn btn-success">Back to Admin</a>
+
+        <div class="container-fluid">
+            <div id="content" class="mx-auto tm-content-container">
+                <main>
+                    <div class="row">
+                        <div class="col-12">
+
+
+
+                            <div class="tm-categories-container mb-5 mt-5" id="product-dashboard">
+                                <h4 class="font-weight-bold">All Products</h4>
+                                <hr>
+
+                                <ul class="list-group">
+                                    <% product.forEach((prod)=>{ %>
+                                        <li class="list-group-item" id="product-content">
+                                            <img src=<%=prod.image %> alt="" style="width: 50px; height: 50px;">
+                                            <p class="mb-0">
+                                                <%= prod.title %>
+                                            </p>
+                                            <p class="font-weight-bold">
+                                                <%= prod.price %>$
+                                            </p>
+                                        </li>
+
+                                        <% }) %>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <%- include('./partials/footer.ejs') %>
+            <!-- tm-content-container -->
+    </div>
+
+    </div>
+    <!-- .tm-page-wrap -->
+
+    <script src="js/jquery-3.4.1.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

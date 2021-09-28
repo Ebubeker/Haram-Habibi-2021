@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include('./partials/head.ejs') %>
+
+        <style>
+            input {
+                display: block;
+                width: 35%;
+            }
+            
+            textarea {
+                display: block;
+                resize: none;
+            }
+            
+            .btn {
+                padding: 8px 20px;
+            }
+            
+            #email-content,
+            #product-content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            #product-content {
+                width: 100%;
+            }
+            
+            #dashboard {
+                display: flex;
+                justify-content: space-between;
+            }
+            
+            #product-dashboard {
+                display: block;
+            }
+            
+            .email-section {
+                width: 100%;
+            }
+            
+            @media (max-width: 991px) {
+                .email-section,
+                .email-list {
+                    width: 100%;
+                    margin-bottom: 50px;
+                }
+            }
+        </style>
+
+</head>
+
+<body>
+
+    <div class="tm-page-wrap mx-auto">
+
+
+
+        <div class="container-fluid">
+            <div id="content" class="mx-auto tm-content-container">
+                <main>
+                    <div class="row">
+                        <div class="col-12">
+
+
+                            <div class="tm-categories-container mb-5" id="dashboard">
+                                <div class="email-section">
+                                    <h4 class="font-weight-bold">Emails Sent To Us</h4>
+                                    <hr>
+                                    <ul class="list-group">
+                                        <% let count = 0; %>
+                                            <% contact.forEach((conto)=>{ %>
+                                                <% count++ %>
+
+                                                    <% if (count < 10) { %>
+                                                        <li class="list-group-item" id="email-content">
+                                                            <p class="mb-0">
+                                                                <%= conto.email %>
+                                                            </p>
+                                                            <i class="fas fa-trash-alt" style="color: rgb(242, 79, 79); cursor: pointer;"></i>
+                                                        </li>
+                                                        <% } %>
+
+
+                                                            <% }) %>
+                                    </ul>
+                                    <a class="btn btn-info mt-3" href="/allEmailsSent">Check All Emails Sent</a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <%- include('./partials/footer.ejs') %>
+            <!-- tm-content-container -->
+    </div>
+
+    </div>
+    <!-- .tm-page-wrap -->
+
+    <script src="js/jquery-3.4.1.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

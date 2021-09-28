@@ -61,6 +61,14 @@ app.get('/product/:num', (req, res) => {
         }).catch((err) => console.log(err));
 });
 
+app.get('/products', (req, res) => {
+    Product.find()
+        .then((result) => {
+            res.render('createdProductsList', { title: 'Product List', product: result });
+        })
+        .catch((err) => console.log(err))
+});
+
 app.get('/search', (req, res) => {
     res.render('searchProduct', { title: 'Search' })
 });
@@ -206,8 +214,8 @@ app.post('/login', (req, res) => {
 app.get('/allEmailsSent', (req, res) => {
     if (req.session.authenticated) {
         Contact.find()
-            .then((results) => {
-                res.send(results);
+            .then((result) => {
+                res.render('allEmailsSent', { title: 'Email List', contact: result });
             })
             .catch((err) => console.log(err))
 
