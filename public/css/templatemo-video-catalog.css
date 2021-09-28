@@ -710,6 +710,9 @@ video {
 }
 
 @media (max-width: 640px) {
+    #login-form {
+        padding: 10px;
+    }
     .tm-subscribe-form {
         flex-direction: column;
         align-items: stretch;
