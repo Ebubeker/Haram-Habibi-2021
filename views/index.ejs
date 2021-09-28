@@ -37,9 +37,9 @@
                 <div class="tm-welcome-container-inner">
                     <p class="tm-welcome-text mb-1 text-black font-weight-bold" id="black-text"> A smile is more precious than anything in the world.</p>
                     <p class="tm-welcome-text mb-5 text-black font-weight-bold" id="anth-black-text">Make sure to smile with us, it is what we want, you to smile!</p>
-                    <a href="/product" class="btn tm-btn-animate tm-btn-cta tm-icon-down">
+                    <!-- <a href="/product" class="btn tm-btn-animate tm-btn-cta tm-icon-down">
                         <span>Products</span>
-                    </a>
+                    </a> -->
                 </div>
             </div>
 
@@ -69,7 +69,7 @@
                                 <% products.forEach((prod)=>{ %>
                                     <% if(count !== 3){ %>
                                         <% count++ %>
-                                            <div id="card" class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item pl-0 pr-0" onclick="affiliateLink('<%= prod.url%>')">
+                                            <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item pl-0 pr-0" onclick="affiliateLink('<%= prod.url%>')">
                                                 <div class="position-relative tm-thumbnail-container">
                                                     <img src=<%=prod.image %> alt="Image" class="img-fluid tm-catalog-item-img" style="max-height: 400px; ">
                                                     <a href=<%=prod.url %>  class="position-absolute tm-img-overlay">
