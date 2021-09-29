@@ -73,22 +73,13 @@
                                     <h4 class="font-weight-bold">Emails Sent To Us</h4>
                                     <hr>
                                     <ul class="list-group">
-                                        <% contact.forEach((conto)=>{ %>
+                                        <% email.forEach((em)=>{ %>
                                             <li class="list-group-item mb-3">
                                                 <div id="email-content">
                                                     <p class="mb-0 text-primary fw-bold">
-                                                        <%= conto.email %>
+                                                        <%= em.email %>
                                                     </p>
-                                                    <i class="fas fa-trash-alt" data-doc="<%= conto._id %> " style="color: rgb(242, 79, 79); cursor: pointer;"></i>
-                                                </div>
-                                                <hr>
-                                                <div>
-                                                    <h4>
-                                                        <%= conto.name %>
-                                                    </h4>
-                                                    <p>
-                                                        <%= conto.message %>
-                                                    </p>
+                                                    <i class="fas fa-trash-alt" data-doc="<%= em._id %> " style="color: rgb(242, 79, 79); cursor: pointer;"></i>
                                                 </div>
                                             </li>
 
@@ -117,7 +108,7 @@
 
         trash.forEach((tra) => {
             tra.addEventListener("click", (e) => {
-                const endpoint = `/allEmailsSent/${tra.dataset.doc}`;
+                const endpoint = `/subscription/${tra.dataset.doc}`;
                 console.log(endpoint)
 
                 fetch(endpoint, {
@@ -128,7 +119,7 @@
                         response.json()
                     })
                     .then((data) => {
-                        window.open('/allEmailsSent', "_self")
+                        window.open('/subscription', "_self")
                     })
                     .catch((err) => console.log(err));
 

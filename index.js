@@ -224,17 +224,39 @@ app.get('/allEmailsSent', (req, res) => {
     }
 });
 
-app.get('/subscriptions', (req, res) => {
+app.delete('/allEmailsSent/:id', (req, res) => {
+    const id = req.params.id;
+
+    Contact.findByIdAndDelete(id)
+        .then((result) => res.json({ redirect: '/allEmailsSent' }))
+})
+
+app.delete('/products/:id', (req, res) => {
+    const id = req.params.id;
+
+    Product.findByIdAndDelete(id)
+        .then((result) => res.json({ redirect: '/products' }))
+})
+
+app.get('/subscription', (req, res) => {
     if (req.session.authenticated) {
 
         Email.find()
             .then((results) => {
-                res.send(results);
+                res.render('subscription', { title: 'Subscription List', email: results });
+
             })
             .catch((err) => console.log(err))
     } else {
         res.redirect('/login')
     }
+});
+
+app.delete('/subscription/:id', (req, res) => {
+    const id = req.params.id;
+
+    Email.findByIdAndDelete(id)
+        .then((result) => res.json({ redirect: '/subscription' }))
 });
 
 app.post('/createProduct', (req, res) => {

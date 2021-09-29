@@ -84,6 +84,7 @@
                                             <p class="font-weight-bold">
                                                 <%= prod.price %>$
                                             </p>
+                                            <i class="fas fa-trash-alt" data-doc="<%= prod._id %> " style="color: rgb(242, 79, 79); cursor: pointer;"></i>
                                         </li>
 
                                         <% }) %>
@@ -102,6 +103,29 @@
     </div>
     <!-- .tm-page-wrap -->
 
+    <script>
+        const trash = document.querySelectorAll(".fa-trash-alt");
+
+        trash.forEach((tra) => {
+            tra.addEventListener("click", (e) => {
+                const endpoint = `/products/${tra.dataset.doc}`;
+                console.log(endpoint)
+
+                fetch(endpoint, {
+                        method: 'DELETE'
+                    })
+                    .then((response) => {
+                        console.log(response)
+                        response.json()
+                    })
+                    .then((data) => {
+                        window.open('/products', "_self")
+                    })
+                    .catch((err) => console.log(err));
+
+            })
+        })
+    </script>
     <script src="js/jquery-3.4.1.min.js "></script>
     <script src="js/bootstrap.min.js "></script>
     <script src="js/admin.js"></script>
