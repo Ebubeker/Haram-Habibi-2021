@@ -10,6 +10,7 @@ const MongoStore = require('connect-mongo');
 const Product = require('./models/product');
 const Email = require('./models/emailColl');
 const Contact = require('./models/conatct');
+const Blog = require('./models/blog');
 
 // const MongoDbSession = require('connect-mongodb-session')(session);
 const PORT = process.env.PORT || 5000;
@@ -53,11 +54,31 @@ app.get('/product', (req, res) => {
         }).catch((err) => console.log(err));
 });
 
+// app.get('/singleBlog', (req, res)=>{
+//     res.render
+// });
+
 app.get('/product/:num', (req, res) => {
     const num = req.params.num;
     Product.find()
         .then((resu) => {
             res.render('productNrPage', { title: 'Products', products: resu, num })
+        }).catch((err) => console.log(err));
+});
+
+app.get('/blog', (req, res) => {
+    const num = 1;
+    Blog.find()
+        .then((result) => {
+            res.render('blog', { title: 'Blog', blog: result, num })
+        })
+});
+
+app.get('/blog/:id', (req, res) => {
+    const id = req.params.id;
+    Blog.findById(id)
+        .then((resu) => {
+            res.render('singleBlog', { title: resu.title, blog: resu })
         }).catch((err) => console.log(err));
 });
 
@@ -173,6 +194,10 @@ app.get('/createProduct', (req, res) => {
     res.render('createProduct', { title: 'Create a Product' });
 });
 
+app.get('/createBlog', (req, res) => {
+    res.render('createBlog', { title: 'Create a Blog' });
+});
+
 app.get('/login', (req, res) => {
     if (req.session.authenticated) {
         res.redirect('/admin');
@@ -277,6 +302,27 @@ app.post('/createProduct', (req, res) => {
     });
 
     product.save()
+        .then(() => {
+            res.redirect('/admin');
+
+        })
+        .catch((err) => console.log(err));
+});
+
+app.post('/createBlog', (req, res) => {
+    let author = req.body.author;
+    let title = req.body.title;
+    let body = req.body.body;
+    let tags = req.body.tags;
+
+    const blog = new Blog({
+        title,
+        author,
+        body,
+        tags
+    });
+
+    blog.save()
         .then(() => {
             res.redirect('/admin');
 

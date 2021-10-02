@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include('./partials/head.ejs') %>
+
+        <style>
+            .btn {
+                padding: 8px 20px;
+            }
+        </style>
+
+</head>
+
+<body>
+    <div class="tm-page-wrap mx-auto">
+        <div class="position-relative">
+            <div class="potition-absolute tm-site-header">
+                <div class="container-fluid position-relative">
+                    <div class="row">
+                        <div class="col-7 col-md-4">
+                        </div>
+                        <div class="col-5 col-md-8 ml-auto mr-0">
+                            <div class="tm-site-nav">
+
+                                <%- include('./partials/nav.ejs') %>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tm-welcome-container tm-fixed-header tm-fixed-header-2">
+                <div class="text-center">
+                    <p class="tm-welcome-text mb-1 text-black font-weight-bold" id="black-text">Smile by buying some of the great Islamic products in the market.</p>
+                </div>
+            </div>
+
+            <div id="tm-fixed-header-bg"></div>
+            <!-- Header image -->
+        </div>
+
+        <!-- Page content -->
+        <div class="container-fluid">
+            <div id="content" class="mx-auto tm-content-container">
+                <main>
+
+                    <div class="row tm-catalog-item-list container" id="products">
+                        <h2 class="display-2 text-black fw-bold">
+                            <%= blog.title %>
+                        </h2>
+                        <hr>
+                        <p class="lead">
+                            <%= blog.body %>
+                        </p>
+                        <footer class="blockquote-footer">Author <cite title="Source Title"><%= blog.author %> </cite></footer>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <%- include('./partials/footer.ejs') %>
+    </div>
+
+    <script src="js/jquery-3.4.1.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/parallax.min.js "></script>
+    <script src="js/products.js "></script>
+    <script src="js/main.js "></script>
+</body>
+
+</html>

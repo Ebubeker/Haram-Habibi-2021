@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include('./partials/head.ejs') %>
+
+        <style>
+            input {
+                display: block;
+                width: 35%;
+            }
+            
+            textarea {
+                display: block;
+                resize: none;
+            }
+            
+            .btn {
+                padding: 8px 20px;
+            }
+            
+            #section {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        </style>
+</head>
+
+<body>
+    <a href="/admin" class="btn btn-success">Go To Admin</a>
+    <div id="section" class="container">
+        <form action="/createBlog" method="post">
+            <h3>New Blog</h3>
+            <input type="text" name="author" placeholder="Author" class="mb-1 form-control">
+            <input type="text" name="title" placeholder="Title" class="mb-1 form-control">
+            <textarea type="text" name="body" placeholder="Body" class="mb-1 form-control" style="height: 300px;"></textarea>
+            <input type="text" name="tags" placeholder="Tags" class="mb-1 form-control">
+            <button class="btn btn-primary mt-3">Create Blog</button>
+        </form>
+    </div>
+</body>
+
+</html>

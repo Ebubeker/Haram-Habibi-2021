@@ -69,7 +69,7 @@
                                 <% products.forEach((prod)=>{ %>
                                     <% if(count !== 3){ %>
                                         <% count++ %>
-                                            <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item " onclick="affiliateLink('<%= prod.url%>')">
+                                            <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item p-0" onclick="affiliateLink('<%= prod.url%>')">
                                                 <div class="position-relative tm-thumbnail-container">
                                                     <img src=<%=prod.image %> alt="Image" class="img-fluid tm-catalog-item-img" style="max-height: 400px; ">
                                                     <a href=<%=prod.url %>  class="position-absolute tm-img-overlay">
