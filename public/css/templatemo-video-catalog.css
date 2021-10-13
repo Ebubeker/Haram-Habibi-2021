@@ -276,11 +276,12 @@ p {
 }
 
 .tm-catalog-item {
-    max-width: 462px;
+    max-width: 450px;
     display: flex;
     flex-direction: column;
     margin-bottom: 64px;
     cursor: pointer;
+    column-gap: 10px;
 }
 
 .tm-catalog-item:hover {
@@ -625,7 +626,7 @@ video {
 
 @media (min-width: 992px) {
     #tm-main-nav .nav-item {
-        margin: 20px 40px;
+        margin: 20px 20px;
     }
     .navbar-expand-lg .navbar-nav .nav-link {
         padding: 8px 0px;
@@ -640,6 +641,8 @@ video {
         margin-bottom: 30px;
     }
 }
+
+@media (max-width: 1201px) {}
 
 @media (max-width: 991px) {
     #black-text,
@@ -702,7 +705,10 @@ video {
         padding: 20px;
     }
     .tm-catalog-item-list {
-        max-width: 924px;
+        max-width: 944px;
+        justify-content: center;
+        margin-left: 5px;
+        margin-right: 5px;
     }
     .tm-share-box {
         max-width: 400px;
