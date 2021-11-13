@@ -124,7 +124,7 @@
 
                                                                                     <% } %>
                                             </div>
-
+                                            
                                             <!-- Catalog Paging Buttons -->
                                             <div>
                                                 <ul class="nav tm-paging-links" id="next-back">
@@ -132,11 +132,17 @@
                                                         <% (products.length % 12) > 0 ? amount++ : amount = amount;%>
                                                             <% for( let i = 0; i < amount; i++ ) { %>
                                                                 <% if (i === 0) { %>
-                                                                    <li class="nav-item active">
+                                                                    <li class="nav-item ">
                                                                         <a href="/product/<%= i+1 %> " class="nav-link tm-paging-link">
                                                                             <%= i+1 %>
                                                                         </a>
                                                                     </li>
+                                                                    <%} else if(parseInt(num) === i+1){ %> 
+                                                                        <li class="nav-item active">
+                                                                            <a href="/product/<%= i+1 %> " class="nav-link tm-paging-link ">
+                                                                                <%= i+1 %>
+                                                                            </a>
+                                                                        </li>
                                                                     <% } else { %>
 
                                                                         <li class="nav-item ">

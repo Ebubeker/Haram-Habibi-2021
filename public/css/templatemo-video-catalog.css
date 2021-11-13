@@ -390,6 +390,7 @@ h2, p {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: black;
 }
 
 .nav-item.active>.tm-paging-link, .nav-item:hover>.tm-paging-link {
