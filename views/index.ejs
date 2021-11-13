@@ -33,24 +33,20 @@
                     </div>
                 </div>
             </div>
-            <div class="tm-welcome-container text-center text-white">
-                <div class="tm-welcome-container-inner">
+            <div class="tm-welcome-container text-center text-white tm-bg-black">
+                <div class="tm-welcome-container-inner tm-bg-gray-lead mb-4">
                     <p class="tm-welcome-text mb-1 text-black font-weight-bold" id="black-text"> A smile is more precious than anything in the world.</p>
-                    <p class="tm-welcome-text mb-5 text-black font-weight-bold" id="anth-black-text">Make sure to smile with us, it is what we want, you to smile!</p>
+                    <p class="tm-welcome-text mb-1 text-black font-weight-bold" id="anth-black-text">Make sure to smile with us, it is what we want, you to smile!</p>
                     <!-- <a href="/product" class="btn tm-btn-animate tm-btn-cta tm-icon-down">
                         <span>Products</span>
                     </a> -->
                 </div>
             </div>
-
+            
             <div id="tm-video-container">
-                <video autoplay muted loop id="tm-video">
-                    <!-- <source src="video/sunset-timelapse-video.mp4" type="video/mp4"> -->
-                        <source src="video/mosque.mp4" type="video/mp4">
-                </video>
+                <div class="video" id="tm-video">
+                </div>
             </div>
-
-            <i id="tm-video-control-button" class="fas fa-pause"></i>
         </div>
 
         <div class="container-fluid">
@@ -63,13 +59,13 @@
                         </div>
                     </div>
 
-                    <div class="row tm-catalog-item-list justify-content-spacebeetwen" id="home-catalog">
+                    <div class="row tm-catalog-item-list justify-content-around" id="home-catalog">
                         <% if(products.length > 0){ %>
                             <% let count = 0 %>
                                 <% products.forEach((prod)=>{ %>
                                     <% if(count !== 3){ %>
                                         <% count++ %>
-                                            <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item p-0" onclick="affiliateLink('<%= prod.url%>')">
+                                            <div class="col-lg-3 col-md-6 col-sm-12 tm-catalog-item p-0" onclick="affiliateLink('<%= prod.url%>')">
                                                 <div class="position-relative tm-thumbnail-container">
                                                     <img src=<%=prod.image %> alt="Image" class="img-fluid tm-catalog-item-img" style="max-height: 400px; ">
                                                     <a href=<%=prod.url %>  class="position-absolute tm-img-overlay">
@@ -83,7 +79,7 @@
                                                     <p class="tm-catalog-item-text">
                                                         <%= prod.description %>
                                                     </p>
-                                                    <p class="font-weight-bold">
+                                                    <p class="tm-catalog-price">
                                                         <%=prod.price %> USD</p>
                                                 </div>
                                             </div>

@@ -18,6 +18,7 @@ body {
     font-size: 18px;
     line-height: 2em;
     overflow-x: hidden;
+    background-color: #f09e512c;
 }
 
 a {
@@ -30,8 +31,7 @@ a:hover {
     text-decoration: none;
 }
 
-h2,
-p {
+h2, p {
     color: #666666;
 }
 
@@ -60,9 +60,10 @@ p {
 }
 
 #tm-video-container {
-    max-height: 720px;
+    height: 720px;
     overflow: hidden;
-    background-color: #333;
+    background-image: url('../img/idkMan.jpg');
+    background-size: cover;
 }
 
 #tm-video {
@@ -71,12 +72,18 @@ p {
 }
 
 .tm-bg-black {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.171);
     color: white;
 }
 
 .tm-bg-gray {
-    background-color: #f4f4f4;
+    background-color: rgb(255, 247, 239);
+    padding: 40px;
+}
+
+.tm-bg-gray-lead {
+    background-color: #99704eec;
+    padding: 40px;
 }
 
 .tm-text-primary {
@@ -97,8 +104,7 @@ p {
     border-bottom: 1.5px solid transparent;
 }
 
-#tm-main-nav .nav-item.active .nav-link,
-#tm-main-nav .nav-item:hover .nav-link {
+#tm-main-nav .nav-item.active .nav-link, #tm-main-nav .nav-item:hover .nav-link {
     border-bottom: 2px solid black;
     color: rgb(0, 0, 0);
     font-weight: bold;
@@ -136,7 +142,6 @@ p {
 .btn-primary:hover {
     background-color: #1674a0;
 }
-
 
 /*
     Button hover effect: https://tympanus.net/Development/CreativeButtons/
@@ -237,10 +242,7 @@ p {
     color: white;
 }
 
-.tm-btn-download:hover,
-.tm-btn-download:focus,
-.tm-btn-submit:hover,
-.tm-btn-submit:focus {
+.tm-btn-download:hover, .tm-btn-download:focus, .tm-btn-submit:hover, .tm-btn-submit:focus {
     color: white;
     background-color: #3399cc;
 }
@@ -269,6 +271,8 @@ p {
 
 .tm-page-title {
     font-size: 2.5rem;
+    color: rgb(39, 39, 39);
+    font-weight: bold;
 }
 
 .tm-catalog-item-list {
@@ -300,6 +304,12 @@ p {
     transform: scale(1.2) rotate(5deg);
 }
 
+.white-shadow-background {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.198);
+    height: 100%;
+    width: 100%;
+}
 
 /* .tm-img-overlay {
     top: 0;
@@ -366,8 +376,7 @@ p {
     border-bottom: 3px solid transparent;
 }
 
-.tm-category-link.active,
-.tm-category-link:hover {
+.tm-category-link.active, .tm-category-link:hover {
     border-bottom: 3px solid black;
     color: #000000;
 }
@@ -383,8 +392,7 @@ p {
     justify-content: center;
 }
 
-.nav-item.active>.tm-paging-link,
-.nav-item:hover>.tm-paging-link {
+.nav-item.active>.tm-paging-link, .nav-item:hover>.tm-paging-link {
     background-color: #ccc;
     color: #666666;
 }
@@ -405,6 +413,15 @@ p {
     margin-bottom: 10px;
 }
 
+.tm-catalog-item-text {
+    font-size: 15px;
+    line-height: 1.6em;
+}
+
+.tm-catalog-price {
+    font-weight: bolder;
+    color: #000;
+}
 
 /*Video detail page*/
 
@@ -444,8 +461,7 @@ p {
     color: #3399cc;
 }
 
-.tm-likes-box,
-.tm-btn-download {
+.tm-likes-box, .tm-btn-download {
     width: 280px;
     height: 60px;
 }
@@ -490,7 +506,7 @@ p {
     background-image: url(../img/about-4.jpg);
 }
 
-video {
+.video {
     width: 100%;
     height: auto;
 }
@@ -515,8 +531,7 @@ video {
     display: inline-block;
 }
 
-.tm-liked-icon,
-.tm-not-liked-icon {
+.tm-liked-icon, .tm-not-liked-icon {
     margin-top: 3px;
 }
 
@@ -537,12 +552,11 @@ video {
 }
 
 .navbrand {
-    height: 45px;
+    height: 100px;
     position: absolute;
-    top: 35px;
-    left: 50px;
+    top: 10px;
+    left: 100px;
 }
-
 
 /*About*/
 
@@ -562,7 +576,6 @@ video {
 .tm-about-icon {
     color: #999;
 }
-
 
 /* Contact */
 
@@ -610,16 +623,14 @@ video {
     font-style: italic;
 }
 
-#black-text,
-#anth-black-text {
+#black-text, #anth-black-text {
     color: #000;
     font-size: 50px;
     padding: 20px;
     text-shadow: 0px 0px 4px rgba(150, 150, 150, 0.6);
 }
 
-#home-catalog img,
-#products img {
+#home-catalog img, #products img {
     width: 100%;
     object-fit: cover;
 }
@@ -645,8 +656,7 @@ video {
 @media (max-width: 1201px) {}
 
 @media (max-width: 991px) {
-    #black-text,
-    #anth-black-text {
+    #black-text, #anth-black-text {
         font-size: 30px;
     }
     .navbar {
